@@ -1,0 +1,34 @@
+.productsCardsWrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 17px;
+  row-gap: 17px;
+  justify-items: center;
+  overflow-y: scroll;
+  height: 100%;
+}
+@media (max-width: 767px) {
+  .productsCardsWrap {
+    display: block;
+    height: 80vh;
+  }
+  .productCardItem:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.startText {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+.homeImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

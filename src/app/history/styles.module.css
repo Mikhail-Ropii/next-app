@@ -1,0 +1,19 @@
+.pageContent {
+  height: 90vh;
+}
+
+.inputWrap {
+  padding: 10px;
+  border: 1px solid #2196f3;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.historyWrap {
+  padding: 20px;
+  border: 1px solid #2196f3;
+  border-radius: 10px;
+  height: 60%;
+}

@@ -1,0 +1,78 @@
+.cardThumb {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+  background: #f5f4fa;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+}
+
+.imgThumb {
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+  margin-right: 40px;
+}
+@media (max-width: 767px) {
+  .imgThumb {
+    width: 120px;
+    margin-right: 25px;
+  }
+}
+@media (max-width: 1023px) {
+  .imgThumb {
+    width: 130px;
+    margin-right: 25px;
+  }
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.counterWrap {
+  display: flex;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.counterNum {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.countBtn {
+  cursor: pointer;
+}
+
+.removeBtn {
+  background-color: #e53131;
+  border: 0;
+  border-radius: 4px;
+  padding: 5px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.35s;
+
+  &:hover {
+    background-color: #d61414;
+  }
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #212121;
+  margin-bottom: 5px;
+}
+
+.productPrice {
+  margin-bottom: 5px;
+  color: red;
+}

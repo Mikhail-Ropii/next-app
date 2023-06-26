@@ -1,0 +1,33 @@
+.formWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.form label {
+  font-weight: 600;
+}
+
+.form input {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+}
+
+.formsWrap {
+  margin-right: 40px;
+}
+
+.invalidMsg {
+  text-align: center;
+  color: red;
+}

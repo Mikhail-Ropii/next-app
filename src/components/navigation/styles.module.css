@@ -1,0 +1,24 @@
+.link {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+
+  color: #212121;
+}
+
+.active {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+
+  color: #0e7ed9;
+}
+
+.active:not(:last-child),
+.link:not(:last-child) {
+  margin-right: 15px;
+}

@@ -1,0 +1,8 @@
+.orderCardsWrap {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.orderItem:not(:last-child) {
+  margin-bottom: 10px;
+}

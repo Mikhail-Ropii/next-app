@@ -1,0 +1,13 @@
+.productsCardsWrap {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.productListItem:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.emptyText {
+  text-align: center;
+  font-size: 18px;
+}

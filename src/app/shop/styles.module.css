@@ -1,0 +1,93 @@
+.shopPageContent {
+  height: 90vh;
+}
+
+@media (min-width: 768px) {
+  .shopPageContent {
+    display: flex;
+  }
+}
+
+.shopMenuWrap {
+  position: relative;
+}
+
+.shopWrap {
+  padding: 20px 30px;
+  border: 1px solid #2196f3;
+  border-radius: 10px;
+  margin-right: 20px;
+  min-width: 250px;
+}
+
+@media (max-width: 767px) {
+  .shopWrap {
+    min-width: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+}
+
+.showBtnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shopShowBtn {
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #212121;
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.shopIcon {
+  margin-right: 5px;
+}
+
+.shopWrapActive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f1f1f1;
+  opacity: 1;
+
+  transition: all 0.5s;
+}
+
+.shopWrapHidden {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  opacity: 0;
+  width: 0;
+  transition: all 0.5s;
+}
+
+.mainText {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.productsWrap {
+  padding: 20px;
+  border: 1px solid #2196f3;
+  border-radius: 10px;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .productsWrap {
+    padding: 10px;
+    width: auto;
+  }
+}
