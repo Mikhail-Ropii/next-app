@@ -1,5 +1,5 @@
 import css from "./styles.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { cartSlice } from "../../redux/cartReducer";
 import { useGetProductsByShopIdQuery } from "../../redux/shopsAPI";
 import { useMediaQuery } from "react-responsive";
@@ -9,15 +9,14 @@ import { Product } from "@/models/product";
 
 //Components
 import { ProductCard } from "../productCard/ProductCard";
-import HomeImage from "../../img/Online_Shoping.jpg";
 
 interface ProductsListProps {
-  currentShop: string;
+  currentShop: string | null;
 }
 
 export const ProductsList = ({ currentShop }: ProductsListProps) => {
-  const dispatch = useDispatch();
-  const cart = useSelector((state: State) => state.cart.cart);
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state: State) => state.cart.cart);
 
   const { data } = useGetProductsByShopIdQuery(currentShop);
 
@@ -54,7 +53,14 @@ export const ProductsList = ({ currentShop }: ProductsListProps) => {
               Choose you favourite restaurant and start shoping!
             </p>
           )}
-          <Image className={css.homeImg} src={HomeImage} alt="Delivery" />
+          <Image
+            className={css.homeImg}
+            width={600}
+            height={600}
+            priority
+            src={"/img/Online_Shoping.jpg"}
+            alt="Delivery"
+          />
         </>
       )}
     </>

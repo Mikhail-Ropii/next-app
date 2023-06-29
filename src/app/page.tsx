@@ -1,10 +1,10 @@
 import styles from "./page.module.css";
-import { Layout } from "@/components/layout/Layout";
+import { ShopPage } from "@/components/shopPage/ShopPage";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Layout />
+      <ShopPage />
     </main>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import css from "./styles.module.css";
 import { useLazyGetOrdersByUserQuery } from "../../redux/ordersAPI";
 //Components
@@ -6,7 +7,7 @@ import { SearchForm } from "../../components/searchForm/SearchForm";
 import { useState } from "react";
 import { OrdersList } from "../../components/ordersList/OrdersList";
 
-export const History = () => {
+export default function Page() {
   const [getOrders, { data }] = useLazyGetOrdersByUserQuery();
   const initialValue = { email: "", phone: "" };
   const [searchData, setSearchData] = useState(initialValue);
@@ -39,4 +40,4 @@ export const History = () => {
       </div>
     </Container>
   );
-};
+}

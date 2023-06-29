@@ -11,12 +11,12 @@ export const Map = ({ userLocation, isLoaded }: MapProps) => {
   const shopLocation = useSelector((state: State) => state.cart.shopLocation);
 
   const HomeIcon = {
-    url: "../../../public/img/home.png",
-    scaledSize: new google.maps.Size(40, 40),
+    url: "/img/home.png",
+    // scaledSize: new google.maps.Size(40, 40),
   };
   const ShopIcon = {
-    url: "../../../public/img/retail-store-icon.jpg",
-    scaledSize: new google.maps.Size(40, 40),
+    url: "/img/retail-store-icon.jpg",
+    // scaledSize: new google.maps.Size(40, 40),
   };
 
   return (

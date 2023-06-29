@@ -5,6 +5,7 @@ export interface ProductInCart {
   price: string;
   totalPrice: string;
   img: string;
+  shop: string;
 }
 
 export interface CartState {

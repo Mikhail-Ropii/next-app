@@ -1,22 +1,28 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { SetStateAction, useEffect, useState } from "react";
 import css from "./styles.module.css";
 import { cartSlice } from "../../redux/cartReducer";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useMediaQuery } from "react-responsive";
+import { Shop } from "@/models/shop";
+import { ProductInCart, State } from "@/models/cart";
 //Components
-import { ShopList } from "../../components/shopList/ShopList";
-import { ProductsList } from "../../components/productsList/ProductsList";
-import { Container } from "../../components/container/Container";
+import { ShopList } from "../shopList/ShopList";
+import { ProductsList } from "../productsList/ProductsList";
+import { Container } from "../container/Container";
 //Icons
 import { AiOutlineShop } from "react-icons/ai";
 
-export const Shop = () => {
-  const dispatch = useDispatch();
-  const [currentShop, setCurrentShop] = useState(null);
-  const [isShopListOpen, setIsShopListOpen] = useState(false);
-  const cart = useSelector((state) => state.cart.cart);
+export const ShopPage = () => {
+  const dispatch = useAppDispatch();
+  const [currentShop, setCurrentShop] = useState<string | null>(null);
+  const [isShopListOpen, setIsShopListOpen] = useState<boolean>(false);
+  const cart = useAppSelector(
+    (state: State) => state.cart.cart
+  ) as ProductInCart[];
 
-  const handleSelectShop = (shop) => {
+  const handleSelectShop = (shop: Shop) => {
     setCurrentShop(shop._id);
 
     dispatch(cartSlice.actions.setShopLocation(shop.location));

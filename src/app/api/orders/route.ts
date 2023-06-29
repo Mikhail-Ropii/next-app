@@ -1,4 +1,4 @@
-import { getDatabase } from "@/utils/mongodb";
+import clientPromise from "@/utils/mongodb";
 import { NextResponse } from "next/server";
 import { ordersSchema } from "@/validations/ordersValidation";
 
@@ -10,8 +10,8 @@ export async function POST(req: Request, res: Response) {
     console.error("Invalid order data:", error.details);
     return;
   }
-
-  const db = getDatabase();
+  const client = await clientPromise;
+  const db = client.db();
   const collection = db.collection("orders");
 
   const result = await collection.insertOne(body);
@@ -19,17 +19,14 @@ export async function POST(req: Request, res: Response) {
   return NextResponse.json(result);
 }
 
-interface ExtendedRequest extends Request {
-  query: {
-    [key: string]: string | string[];
-  };
-}
-
-export async function GET(req: ExtendedRequest, res: Response) {
-  const db = getDatabase();
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const client = await clientPromise;
+  const db = client.db();
   const collection = db.collection("orders");
 
-  const { email, phone } = req.query;
+  const email = searchParams.get("email");
+  const phone = searchParams.get("phone");
 
   const result = await collection
     .find({

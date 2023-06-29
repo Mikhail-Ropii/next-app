@@ -1,34 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
+"use client";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import css from "./styles.module.css";
 import { useState } from "react";
 import { usePlaceOrderMutation } from "../../redux/ordersAPI";
 import { cartSlice } from "../../redux/cartReducer";
 import { useMediaQuery } from "react-responsive";
+import { Map } from "../../components/map/Map";
+import { useJsApiLoader } from "@react-google-maps/api";
+import { State } from "@/models/cart";
 
 //Components
 import { Container } from "../../components/container/Container";
 import { UserForm } from "../../components/userForm/UserForm";
 import { CartBlock } from "../../components/cartBlock/CartBlock";
 import { MainButton } from "../../components/mainButton/MainButton";
-import { Map } from "../../components/map/Map";
-import { useJsApiLoader } from "@react-google-maps/api";
 
 const { REACT_APP_MAPS_API_KEY } = process.env;
-const libraries = ["places"];
+const libraries = ["places"] as any;
 
-export const Cart = () => {
+export default function Page() {
   const initialValue = {
     name: "",
     email: "",
     phone: "",
     address: "",
   };
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [location, setLocation] = useState({ lat: "", lng: "" });
   const [userData, setUserData] = useState(initialValue);
   const [isFormValid, setIsFormValid] = useState(true);
-  const cart = useSelector((state) => state.cart.cart);
-  const sum = useSelector((state) => state.cart.sum);
+  const cart = useAppSelector((state: State) => state.cart.cart);
+  const sum = useAppSelector((state: State) => state.cart.sum);
   const [placeOrder] = usePlaceOrderMutation();
 
   const { isLoaded } = useJsApiLoader({
@@ -83,4 +85,4 @@ export const Cart = () => {
       </div>
     </Container>
   );
-};
+}

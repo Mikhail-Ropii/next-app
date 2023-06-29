@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
+// import { storage } from "./storage";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
@@ -11,7 +12,6 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { createWrapper } from "next-redux-wrapper";
 import { cartSlice } from "./cartReducer";
 import { shopsAPI } from "./shopsAPI";
 import { ordersAPI } from "./ordersAPI";
@@ -26,27 +26,25 @@ const persistedCartReducer = persistReducer(
   cartSlice.reducer
 );
 
-const makeStore = () => {
-  const store = configureStore({
-    reducer: {
-      [shopsAPI.reducerPath]: shopsAPI.reducer,
-      [ordersAPI.reducerPath]: ordersAPI.reducer,
-      cart: persistedCartReducer,
-    },
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      })
-        .concat(shopsAPI.middleware)
-        .concat(ordersAPI.middleware),
-  });
+export const store = configureStore({
+  reducer: {
+    [shopsAPI.reducerPath]: shopsAPI.reducer,
+    [ordersAPI.reducerPath]: ordersAPI.reducer,
+    cart: persistedCartReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    })
+      .concat(shopsAPI.middleware)
+      .concat(ordersAPI.middleware),
+});
 
-  setupListeners(store.dispatch);
-  return store;
-};
+setupListeners(store.dispatch);
 
-export const wrapper = createWrapper(makeStore);
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
-export const persistor = persistStore(makeStore());
+export const persistor = persistStore(store);

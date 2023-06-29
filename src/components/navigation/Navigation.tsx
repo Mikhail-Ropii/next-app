@@ -1,9 +1,10 @@
+"use client";
 import css from "./styles.module.css";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 export const Navigation = () => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   return (
     <>
       <Link

@@ -6,7 +6,7 @@ import { Shop } from "@/models/shop";
 
 interface ShopListProps {
   onSelectShop: (item: Shop) => void;
-  currentShop: string;
+  currentShop: string | null;
 }
 
 export const ShopList = ({ onSelectShop, currentShop }: ShopListProps) => {
