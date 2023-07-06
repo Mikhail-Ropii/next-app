@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const shopsAPI = createApi({
   reducerPath: "shopsAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api',
+    baseUrl: "/api",
   }),
   tagTypes: ["shops"],
 
@@ -26,8 +26,5 @@ export const shopsAPI = createApi({
   }),
 });
 
-export const {
-  useGetShopsListQuery,
-  useGetProductsByShopIdQuery,
-  useLazyGetProductsByShopIdQuery,
-} = shopsAPI;
+export const { useGetShopsListQuery, useLazyGetProductsByShopIdQuery } =
+  shopsAPI;

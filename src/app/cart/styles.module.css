@@ -66,3 +66,12 @@
   align-self: flex-end;
   align-items: baseline;
 }
+
+.successText {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+
+  color: green;
+}

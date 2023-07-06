@@ -6,7 +6,8 @@ import { cartSlice } from "../../redux/cartReducer";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useMediaQuery } from "react-responsive";
 import { Shop } from "@/models/shop";
-import { ProductInCart, State } from "@/models/cart";
+import { ProductInCart } from "@/models/cart";
+import { RootState } from "@/redux/store";
 //Components
 import { ShopList } from "../shopList/ShopList";
 import { ProductsList } from "../productsList/ProductsList";
@@ -19,7 +20,7 @@ export const ShopPage = () => {
   const [currentShop, setCurrentShop] = useState<string | null>(null);
   const [isShopListOpen, setIsShopListOpen] = useState<boolean>(false);
   const cart = useAppSelector(
-    (state: State) => state.cart.cart
+    (state: RootState) => state.cart.cart
   ) as ProductInCart[];
 
   const handleSelectShop = (shop: Shop) => {
@@ -65,6 +66,7 @@ export const ShopPage = () => {
                 <ShopList
                   currentShop={currentShop}
                   onSelectShop={handleSelectShop}
+                  setIsShopListOpen={setIsShopListOpen}
                 />
               </div>
             </div>
@@ -75,6 +77,7 @@ export const ShopPage = () => {
             <ShopList
               currentShop={currentShop}
               onSelectShop={handleSelectShop}
+              setIsShopListOpen={setIsShopListOpen}
             />
           </div>
         )}

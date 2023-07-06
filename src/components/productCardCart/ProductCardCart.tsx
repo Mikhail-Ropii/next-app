@@ -25,7 +25,13 @@ export const ProductCardCart = ({
       {isMobileAndTab && <p className={css.productName}>{product.name}</p>}
       <div className={css.cardThumb}>
         <div className={css.imgThumb}>
-          <Image className={css.img} src={product.img} alt="Meal" />
+          <Image
+            width={300}
+            height={300}
+            className={css.img}
+            src={product.img}
+            alt="Meal"
+          />
         </div>
         <div>
           {!isMobileAndTab && <p className={css.productName}>{product.name}</p>}

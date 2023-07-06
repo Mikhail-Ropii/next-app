@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import css from "./styles.module.css";
 import Image from "next/image";
 
@@ -29,7 +28,13 @@ export const OrderCard = ({ order }: OrderCardProps) => {
         {order.cart.map((item: Product) => (
           <li key={item._id}>
             <div className={css.imgThumb}>
-              <Image className={css.img} src={item.img} alt="Meal" />
+              <Image
+                width={200}
+                height={150}
+                className={css.img}
+                src={item.img}
+                alt="Meal"
+              />
             </div>
             <div>
               <p className={css.productName}>{item.name}</p>

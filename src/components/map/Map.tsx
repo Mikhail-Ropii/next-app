@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
-import { ShopLocation, State } from "@/models/cart";
+import { ShopLocation } from "@/models/cart";
+import { RootState } from "@/redux/store";
 
 interface MapProps {
   userLocation: ShopLocation;
@@ -8,15 +9,15 @@ interface MapProps {
 }
 
 export const Map = ({ userLocation, isLoaded }: MapProps) => {
-  const shopLocation = useSelector((state: State) => state.cart.shopLocation);
+  const shopLocation = useSelector(
+    (state: RootState) => state.cart.shopLocation
+  );
 
   const HomeIcon = {
     url: "/img/home.png",
-    // scaledSize: new google.maps.Size(40, 40),
   };
   const ShopIcon = {
     url: "/img/retail-store-icon.jpg",
-    // scaledSize: new google.maps.Size(40, 40),
   };
 
   return (

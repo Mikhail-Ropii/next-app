@@ -20,7 +20,13 @@ export const ProductCard = ({
   return (
     <div className={css.cardThumb}>
       <div className={css.imgThumb}>
-        <img className={css.img} src={product.img} alt="Meal" />
+        <Image
+          width={300}
+          height={300}
+          className={css.img}
+          src={product.img}
+          alt="Meal"
+        />
       </div>
       <p className={css.productName}>{product.name}</p>
       <p className={css.productPrice}>{product.price} $</p>

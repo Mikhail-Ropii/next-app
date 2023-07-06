@@ -1,17 +1,22 @@
 import css from "./styles.module.css";
 import { useSelector } from "react-redux";
 import { useGetShopsListQuery } from "../../redux/shopsAPI";
-import { State } from "@/models/cart";
 import { Shop } from "@/models/shop";
+import { RootState } from "@/redux/store";
 
 interface ShopListProps {
   onSelectShop: (item: Shop) => void;
   currentShop: string | null;
+  setIsShopListOpen: (value: boolean) => void;
 }
 
-export const ShopList = ({ onSelectShop, currentShop }: ShopListProps) => {
+export const ShopList = ({
+  onSelectShop,
+  currentShop,
+  setIsShopListOpen,
+}: ShopListProps) => {
   const { data } = useGetShopsListQuery({});
-  const cart = useSelector((state: State) => state.cart.cart);
+  const cart = useSelector((state: RootState) => state.cart.cart);
   return (
     <>
       {data ? (
@@ -23,7 +28,10 @@ export const ShopList = ({ onSelectShop, currentShop }: ShopListProps) => {
                 className={`${css.shopBtn} ${
                   currentShop === item._id ? css.shopBtnActive : ""
                 }`}
-                onClick={() => onSelectShop(item)}
+                onClick={() => {
+                  onSelectShop(item);
+                  setIsShopListOpen(false);
+                }}
                 type="button"
               >
                 {item.name}

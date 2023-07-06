@@ -7,15 +7,15 @@ import { cartSlice } from "../../redux/cartReducer";
 import { useMediaQuery } from "react-responsive";
 import { Map } from "../../components/map/Map";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { State } from "@/models/cart";
 
 //Components
 import { Container } from "../../components/container/Container";
 import { UserForm } from "../../components/userForm/UserForm";
 import { CartBlock } from "../../components/cartBlock/CartBlock";
 import { MainButton } from "../../components/mainButton/MainButton";
+import { RootState } from "@/redux/store";
 
-const { REACT_APP_MAPS_API_KEY } = process.env;
+const { NEXT_PUBLIC_MAPS_API_KEY } = process.env;
 const libraries = ["places"] as any;
 
 export default function Page() {
@@ -29,16 +29,17 @@ export default function Page() {
   const [location, setLocation] = useState({ lat: "", lng: "" });
   const [userData, setUserData] = useState(initialValue);
   const [isFormValid, setIsFormValid] = useState(true);
-  const cart = useAppSelector((state: State) => state.cart.cart);
-  const sum = useAppSelector((state: State) => state.cart.sum);
+  const [isSucccess, setIsSuccess] = useState(false);
+  const cart = useAppSelector((state: RootState) => state.cart.cart);
+  const sum = useAppSelector((state: RootState) => state.cart.sum);
   const [placeOrder] = usePlaceOrderMutation();
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: REACT_APP_MAPS_API_KEY,
+    googleMapsApiKey: NEXT_PUBLIC_MAPS_API_KEY,
     libraries: libraries,
   });
 
-  const handleSubmitBtn = () => {
+  const handleSubmitBtn = async () => {
     if (
       userData.name.trim() !== "" &&
       userData.email.trim() !== "" &&
@@ -47,7 +48,10 @@ export default function Page() {
       cart.length !== 0
     ) {
       setIsFormValid(true);
-      placeOrder({ cart, sum, userData });
+      try {
+        await placeOrder({ cart, sum, userData });
+        setIsSuccess(true);
+      } catch (error) {}
       setUserData(initialValue);
       dispatch(cartSlice.actions.resetCart());
     } else {
@@ -76,7 +80,14 @@ export default function Page() {
               Total price: {sum.toFixed(2)} $
             </p>
           )}
-          <div className={css.productsWrap}>{<CartBlock />}</div>
+          <div className={css.productsWrap}>
+            {<CartBlock />}
+            {isSucccess && (
+              <p className={css.successText}>
+                Your order is successfully sent!
+              </p>
+            )}
+          </div>
         </div>
         <div className={css.orderResume}>
           <p className={css.mainText}>Total price: {sum.toFixed(2)} $</p>

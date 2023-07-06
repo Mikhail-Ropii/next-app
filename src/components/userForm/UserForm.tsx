@@ -28,7 +28,7 @@ export const UserForm = ({
   isLoaded,
 }: UserFormProps) => {
   const [searchResult, setSearchResult] =
-    useState<google.maps.places.PlaceResult | null>(null);
+    useState<google.maps.places.Autocomplete | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -47,12 +47,12 @@ export const UserForm = ({
   };
 
   const onLoad = (autocomplete: google.maps.places.Autocomplete) => {
-    setSearchResult(autocomplete.getPlace());
+    setSearchResult(autocomplete);
   };
 
   const onPlaceChanged = () => {
     if (searchResult) {
-      const places = searchResult;
+      const places = searchResult.getPlace();
       if (
         places.geometry === undefined ||
         places.geometry.location === undefined
@@ -64,7 +64,7 @@ export const UserForm = ({
       setLocation({ lat, lng });
       setUserData((prevData) => ({
         ...prevData,
-        address: places.formatted_address || "",
+        address: places.formatted_address as string,
       }));
     }
   };
