@@ -20,10 +20,10 @@
 
   cursor: pointer;
   transition: 0.35s;
-  &:hover {
-    background-color: #f5f4fa;
-    color: #212121;
-  }
+}
+.shopBtn:hover {
+  background-color: #f5f4fa;
+  color: #212121;
 }
 
 .shopBtnActive {

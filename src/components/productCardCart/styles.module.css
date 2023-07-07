@@ -58,10 +58,9 @@
   color: #ffffff;
   cursor: pointer;
   transition: 0.35s;
-
-  &:hover {
-    background-color: #d61414;
-  }
+}
+.removeBtn:hover {
+  background-color: #d61414;
 }
 
 .productName {

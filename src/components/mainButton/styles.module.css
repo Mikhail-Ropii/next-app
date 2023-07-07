@@ -9,14 +9,11 @@
   cursor: pointer;
   transition: 0.35s;
   box-sizing: content-box;
-  &:hover {
-    background-color: #4490cf;
-  }
+}
+.btn:hover {
+  background-color: #4490cf;
 }
 
 .btn:disabled {
   cursor: not-allowed;
-  &:hover {
-    background-color: #2196f3;
-  }
 }
