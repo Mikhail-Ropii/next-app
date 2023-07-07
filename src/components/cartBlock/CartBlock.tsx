@@ -1,15 +1,15 @@
-import { ObjectId } from "mongodb";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./styles.module.css";
 import { cartSlice } from "../../redux/cartReducer";
-import { ProductInCart, State } from "@/models/cart";
+import { ProductInCart } from "@/models/cart";
 //Components
 import { ProductCardCart } from "../productCardCart/ProductCardCart";
+import { RootState } from "@/redux/store";
 
 export const CartBlock = () => {
   const dispatch = useDispatch();
   const cart = useSelector(
-    (state: State) => state.cart.cart
+    (state: RootState) => state.cart.cart
   ) as ProductInCart[];
 
   const handleMinusBtn = (product: ProductInCart) => {
