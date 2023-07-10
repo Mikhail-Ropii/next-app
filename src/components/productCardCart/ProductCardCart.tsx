@@ -17,9 +17,6 @@ export const ProductCardCart = ({
   onPlusBtn,
   onRemoveProduct,
 }: ProductCardCartProps) => {
-  // const normolizeTotalPrice = parseFloat(product.totalPrice).toFixed(2);
-  const normolizeTotalPrice = product.totalPrice;
-
   const isMobileAndTab = useMediaQuery({ query: "(max-width: 1023px)" });
 
   return (
@@ -42,11 +39,14 @@ export const ProductCardCart = ({
               <p className={css.productPrice}>
                 {product.price} $ x {product.qty}
               </p>
-              <p className={css.productPrice}>{normolizeTotalPrice} $</p>
+              <p className={css.productPrice}>
+                {product.totalPrice.toFixed(2)} $
+              </p>
             </>
           ) : (
             <p className={css.productPrice}>
-              {product.price} x {product.qty} = {normolizeTotalPrice} $
+              {product.price} x {product.qty} = {product.totalPrice.toFixed(2)}{" "}
+              $
             </p>
           )}
           <div className={css.counterWrap}>
