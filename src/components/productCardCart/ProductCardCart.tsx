@@ -17,7 +17,9 @@ export const ProductCardCart = ({
   onPlusBtn,
   onRemoveProduct,
 }: ProductCardCartProps) => {
-  const normolizeTotalPrice = parseFloat(product.totalPrice).toFixed(2);
+  // const normolizeTotalPrice = parseFloat(product.totalPrice).toFixed(2);
+  const normolizeTotalPrice = product.totalPrice;
+
   const isMobileAndTab = useMediaQuery({ query: "(max-width: 1023px)" });
 
   return (
