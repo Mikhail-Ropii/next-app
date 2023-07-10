@@ -15,7 +15,6 @@ import { CartBlock } from "../../components/cartBlock/CartBlock";
 import { MainButton } from "../../components/mainButton/MainButton";
 import { RootState } from "@/redux/store";
 
-const { NEXT_PUBLIC_MAPS_API_KEY } = process.env;
 const libraries = ["places"] as any;
 
 export default function Page() {
@@ -35,7 +34,7 @@ export default function Page() {
   const [placeOrder] = usePlaceOrderMutation();
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: NEXT_PUBLIC_MAPS_API_KEY,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY,
     libraries: libraries,
   });
 
